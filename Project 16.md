@@ -51,9 +51,54 @@ Overall, Terraform offers a number of benefits for managing infrastructure as co
     
     
     AWS Identify and Access Management (IAM) credentials and programmatic access.
+
+
+    Create IAM user and name it 'terraform' and grant this user AdministratorAccess permissions.
     
-    Set up AWS credentials locally with aws configure in the AWS Command Line Interface (CLI). Click here
+
+    Download and save the Access Key ID and Secret Access Key
+
     
+    Set up AWS credentials locally with aws configure in the AWS Command Line Interface (CLI). Click https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+    To install AWS CLI, use the commands below on your local machine terminal; if you don't have curl installed already on your local machine use the command 'sudo snap install curl'
+
+
+
+    Also ensure you have zip installed on your machine
+
+
+    ~~~
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    ~~~
+
+
+
+
+Then, Configure programmatic access from your workstation to connect to AWS using the access keys copied above and a Python SDK (boto3). You must have Python 3.6 or higher on your workstation.
+
+
+
+
+![Screenshot from 2024-01-13 22-48-51](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/fac04aeb-b521-471c-80d7-f55953eacbc5)
+
+
+
+To install Python boto3
+
+
+
+~~~
+sudo apt install python3-pip
+pip install boto3
+~~~
+
+
+
+
+
 
 To write quality Terraform codes, we need to:
 
