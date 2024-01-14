@@ -442,3 +442,92 @@ If you also observed closely, you would realise that another file - terraform.tf
 
 
 
+#### Subnets resource section
+
+
+
+
+
+
+According to our architectural design, we require 6 subnets:
+
+
+    2 public
+    
+    2 private for webservers
+    
+    2 private for data layer
+    
+
+Let us create the first 2 public subnets.
+
+
+Add below configuration to the main.tf file:
+
+
+
+
+
+
+
+~~~
+
+# Create public subnets1
+resource "aws_subnet" "public1" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "172.16.1.0/24"
+  map_public_ip_on_launch = true
+  availability_zone       = "us-east-1a"
+  tags = {
+    Name = "netrill-pub-1"
+  }
+
+}
+
+# Create public subnet2
+resource "aws_subnet" "public2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "172.16.2.0/24"
+  map_public_ip_on_launch = true
+  availability_zone       = "us-east-1b"
+  tags = {
+    Name = "netrill-pub-2"
+  }
+}
+~~~
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 03-31-42](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/ce7d1b71-7257-467f-b0fa-0156ae55c559)
+
+
+
+
+
+
+
+We are creating 2 subnets, therefore declaring 2 resource blocks – one for each of the subnets. We are using the vpc_id argument to interpolate the value of the VPC id by setting it to aws_vpc.main.id. This way, Terraform knows inside which VPC to create the subnet.
+
+
+Run the commands
+
+
+$ terraform validate
+
+
+$ terraform fmt
+
+
+$ terraform plan
+
+
+Then
+
+
+$ terraform apply to create the public subnets.
+
