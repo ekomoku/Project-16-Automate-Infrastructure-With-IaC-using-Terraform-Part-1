@@ -531,3 +531,70 @@ Then
 
 $ terraform apply to create the public subnets.
 
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 09-42-46](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/1b92adef-5523-4aba-bbe9-b7c207ecfeae)
+
+
+
+
+
+#### Observations:
+
+
+
+
+
+
+
+
+Hard coded values: Remember our best practice hint from the beginning? Both the availability_zone and cidr_block arguments are hard coded. We should always endeavour to make our work dynamic.
+
+
+Multiple Resource Blocks: Notice that we have declared multiple resource blocks for each subnet in the code. This is bad coding practice. We need to create a single resource block that can dynamically create resources without specifying multiple blocks. Imagine if we wanted to create 10 subnets, our code would look very clumsy. So, we need to optimize this by introducing a count argument.
+
+
+
+
+
+Now let us improve our code by refactoring it.
+
+
+
+
+
+
+First, destroy the current infrastructure. Since we are still in development, this is totally fine. Otherwise, DO NOT DESTROY an infrastructure that has been deployed to production.
+
+
+
+To destroy whatever has been created run terraform destroy command, and type yes after evaluating the plan.
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 09-49-34](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/0c1aa4de-3cb8-45b0-a167-68a87dede636)
+
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 09-49-54](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/67de82c3-9f65-48c1-851c-d6908afa5d09)
+
+
+
+
+
+#### Fixing The Problems By Code Refactoring
