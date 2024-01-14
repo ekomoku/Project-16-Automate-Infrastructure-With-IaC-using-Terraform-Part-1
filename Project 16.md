@@ -260,6 +260,7 @@ on the main.tf file, add the following codes
 
 
 
+
 ~~~
 provider "aws" {
   region = "us-east-1"
@@ -299,6 +300,8 @@ Install terraform on your local machine using the command
 
 
 
+
+
 ~~~
 wget https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip
 sudo apt-get install unzip
@@ -306,6 +309,17 @@ unzip terraform_0.15.5_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 terraform --version
 ~~~
+
+
+
+
+
+
+Then run the command
+
+
+
+terraform init
 
 
 
@@ -322,10 +336,7 @@ terraform --version
 
 
 
-Run the command
 
-
-terraform init
 
 
 
