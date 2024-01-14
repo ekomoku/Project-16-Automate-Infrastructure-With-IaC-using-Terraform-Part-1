@@ -215,7 +215,13 @@ Install the following Terraform extensions on Vs Code
 
 
 
+
+
+
 ![Screenshot from 2024-01-14 01-46-50](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/740c92bb-7665-444c-8000-1f2ae7cb7a92)
+
+
+
 
 
 
@@ -238,7 +244,14 @@ Go to Terraform documentation ( https://registry.terraform.io/) , select the pro
 
 
 
+
+
+
 ![Screenshot from 2024-01-14 02-00-05](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/d3e60d33-841d-497b-823b-9284b7d8acaa)
+
+
+
+
 
 
 
@@ -270,6 +283,8 @@ resource "aws_vpc" "main" {
 
 
 
+
+
 ![Screenshot from 2024-01-14 02-22-28](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/e8b9208b-ccf8-44b7-b4f0-c95e72fb642a)
 
 
@@ -279,20 +294,31 @@ resource "aws_vpc" "main" {
 Then download the necessary plugins for Terraform to work. These plugins are used by providers and provisioners. At this stage, we only have provider in our main.tf file. So, Terraform will just download plugin for AWS provider. 
 
 
-Install terraform on the PBL directory on your local machine using the command 
-
-
-
-
-
-![Screenshot from 2024-01-14 02-28-13](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/1a4e1293-83a4-4ebd-bab3-8c0f3a8f090c)
+Install terraform on your local machine using the command 
 
 
 
 
 ~~~
-sudo snap install terraform --classic
+wget https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip
+sudo apt-get install unzip
+unzip terraform_0.15.5_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform --version
 ~~~
+
+
+
+
+
+
+![Screenshot from 2024-01-14 02-51-12](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/a594a5b5-75dd-4730-bbce-b0ad65258e55)
+
+
+
+
+
+
 
 
 
