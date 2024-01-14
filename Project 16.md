@@ -833,11 +833,11 @@ If we cannot hard code a value we want, then we will need a way to dynamically p
 To do this, we can introuduce length() function, which basically determines the length of a given list, map, or string.
 
 
-Since data.aws_availability_zones.available.names returns a list like ["eu-central-1a", "eu-central-1b", "eu-central-1c"] we can pass it into a lenght function and get number of the AZs.
+Since data.aws_availability_zones.available.names returns a list like ["us-east-1a", "us-east-1b", "us-east-1c"] we can pass it into a lenght function and get number of the AZs.
 
 
 
-length(["eu-central-1a", "eu-central-1b", "eu-central-1c"])
+length(["us-east-1a", "us-east-1b", "us-east-1c"])
 
 
 
@@ -947,7 +947,7 @@ state = "available"
 }
 
 variable "region" {
-      default = "eu-central-1"
+      default = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -1079,6 +1079,15 @@ resource "aws_subnet" "public" {
 
 
 
+
+![Screenshot from 2024-01-14 20-29-39](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/cf215b95-ddb6-4cd2-a266-125d2d2498f2)
+
+
+
+
+
+
+
 #### variables.tf
 
 
@@ -1086,7 +1095,7 @@ resource "aws_subnet" "public" {
 
 ~~~
 variable "region" {
-      default = "eu-central-1"
+      default = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -1117,6 +1126,18 @@ variable "enable_classiclink_dns_support" {
 
 
 
+
+
+
+
+
+![Screenshot from 2024-01-14 20-29-02](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/fc55024f-eff7-43e5-a04a-a6dd6294b686)
+
+
+
+
+
+
 #### terraform.tfvars
 
 
@@ -1124,7 +1145,7 @@ variable "enable_classiclink_dns_support" {
 
 
 ~~~
-region = "eu-central-1"
+region = "us-east-1"
 
 vpc_cidr = "172.16.0.0/16" 
 
@@ -1139,6 +1160,12 @@ enable_classiclink_dns_support = "false"
 preferred_number_of_public_subnets = 2
 ~~~
 
+
+
+
+
+
+![Screenshot from 2024-01-14 20-28-15](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/18635f79-eacc-467c-b1e2-df3e260ccad4)
 
 
 
@@ -1166,7 +1193,99 @@ You should also have this file structure in the PBL folder.
 
 
 
-Run terraform plan and ensure everything works
+Run 
+
+
+
+
+terraform init
+
+
+terraform validate
+
+
+terraform fmt
+
+
+terraform plan
+
+
+terraform apply
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-35-56](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/e9976fe6-1cde-4b7a-b171-a987d44ef59b)
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-37-05](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/e35e2007-6bbc-468a-b634-924022640140)
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-48-05](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/fc0786c4-4f00-4cd5-95f8-f36c98e151ae)
+
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-48-44](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/41c10c72-2073-4b87-945e-2a092b2e0a35)
+
+
+
+
+
+
+
+
+
+
+We have successfully created our VPC and subnets in the region and availability zones respectively.
+
+
+
+Run
+
+
+
+$ terraform destroy to delete the resources.
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-50-51](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/782f6d40-2bb9-4c36-bb99-7f4a4bf95aac)
+
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 20-51-16](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/6639c187-cfe0-46e0-a45f-d74651a97b9a)
+
+
+
+
 
 
 
