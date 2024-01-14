@@ -271,8 +271,6 @@ resource "aws_vpc" "main" {
   cidr_block                     = "172.16.0.0/16"
   enable_dns_support             = "true"
   enable_dns_hostnames           = "true"
-  enable_classiclink             = "false"
-  enable_classiclink_dns_support = "false"
   tags = {
     Name = "netrill-VPC"
   }
@@ -326,6 +324,10 @@ terraform init
 
 
 
+
+
+
+
 ![Screenshot from 2024-01-14 02-51-12](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/a594a5b5-75dd-4730-bbce-b0ad65258e55)
 
 
@@ -333,10 +335,108 @@ terraform init
 
 
 
+![Screenshot from 2024-01-14 03-03-17](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/e883445d-4e0b-487b-8ddc-5a3f8eeb6679)
 
 
 
 
+
+
+
+A new file has been created: .terraform. This is where Terraform keeps plugins.
+
+
+
+
+Create the resource we just defined - aws_vpc by running the following commands
+
+
+
+
+$ terraform validate - To validate the code
+
+
+
+
+
+$ terraform fmt - To format the code for readability
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 03-08-11](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/77c0be5b-d848-48be-bb6b-a16b1a0c698d)
+
+
+
+
+
+we should check to see what terraform intends to create before we tell it to go ahead and create it by running the command
+
+
+
+$ terraform plan
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 03-10-49](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/6b7dd205-56f1-456b-aab3-d5afd4668bd4)
+
+
+
+
+
+
+
+If we are good with the chages planned, run the command
+
+
+
+
+
+$ terraform apply
+
+
+
+
+
+
+
+
+![Screenshot from 2024-01-14 03-14-03](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/b2ecf4da-9f54-469a-9901-de9f11c50c80)
+
+
+
+
+
+
+This creates the VPC - narbyd-VPC and its attributes.
+
+
+
+
+
+
+![Screenshot from 2024-01-14 03-22-09](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/dcb66f85-0f77-4b30-88ce-fc911cf19411)
+
+
+
+
+
+
+A new file is created terraform.tfstate This is how Terraform keeps itself up to date with the exact state of the infrastructure. It reads this file to know what already exists, what should be added, or destroyed based on the entire terraform code that is being developed.
+
+
+
+
+If you also observed closely, you would realise that another file - terraform.tfstate.lock.info gets created during planning and apply but this file gets deleted immediately. This is what Terraform uses to track, who is running its code against the infrastructure at any point in time. This is very important for teams working on the same Terraform repository at the same time. The logs prevents a user from executing Terraform configuration against the same infrastructure when another user is doing the same – it allows to avoid duplicates and conflicts.
 
 
 
