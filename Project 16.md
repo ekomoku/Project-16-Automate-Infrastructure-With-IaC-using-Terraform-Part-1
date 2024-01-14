@@ -119,3 +119,97 @@ The resources to be created include:
     2 Public subnets
 
 
+
+#### CREATE S3 BUCKET
+
+
+Create an S3 bucket to store Terraform state file. You can name it something like <yourname>-dev-terraform-bucket (Note: S3 bucket names must be unique unique within a region partition.
+
+
+
+![Screenshot from 2024-01-14 00-39-38](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/57762e55-a572-4674-aff8-b60458b8d2ad)
+
+
+
+
+
+From my terminal, refresh the CLI credentials again as shown below with the Access Key ID and Secret Acces key
+
+
+
+![Screenshot from 2024-01-14 01-20-41](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/f40cefb6-0563-44e0-940a-06d6077d6268)
+
+
+
+
+I should be able to see the S3 bucket i just created if my aws CLI is configured. Run the command
+
+~~~
+aws s3 ls
+~~~
+
+
+
+If you can't see it do the following;
+
+
+Sign in to the AWS Management Console.
+
+Navigate to the "IAM" service.
+
+In the IAM dashboard, select the IAM user or role that is encountering the 403 error.
+
+Go to the "Permissions" tab to review the attached policies and permissions.
+
+Ensure that the user or role has the s3:ListAllMyBuckets permission to list S3 buckets. Click on 'Add Permissions > Create inline policy, then select s3 from the dropdown and select the access level
+
+If the necessary policy is not attached, attach the AmazonS3ReadOnlyAccess managed policy to the user or role. This policy includes the required permissions for listing S3 buckets.
+
+Alternatively, you can create a custom inline policy ( with json) with the s3:ListAllMyBuckets permission:
+
+
+
+~~~
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListAllMyBuckets",
+      "Resource": "*"
+    }
+  ]
+}
+~~~
+
+
+
+
+![Screenshot from 2024-01-14 01-24-59](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/8bf65f50-5eae-4f0d-add6-569756a1410e)
+
+
+
+
+![Screenshot from 2024-01-14 01-26-00](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/8e2718b1-4f23-48da-956d-3f85c18fd136)
+
+
+
+
+#### CREATING VPC | SUBNETS | SECURITY GROUPS
+
+
+
+Create a directory structure.
+
+In VS Code, Create a folder called PBL and create a file in the folder, name it main.tf
+
+Install the following Terraform extensions on Vs Code
+
+
+
+
+
+![Screenshot from 2024-01-14 01-39-59](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/8534dc3e-5cbb-4441-bbec-c0aa6e711979)
+
+
+
