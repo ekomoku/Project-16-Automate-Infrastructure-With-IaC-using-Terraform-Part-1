@@ -213,3 +213,95 @@ Install the following Terraform extensions on Vs Code
 
 
 
+
+
+![Screenshot from 2024-01-14 01-46-50](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/740c92bb-7665-444c-8000-1f2ae7cb7a92)
+
+
+
+
+#### Provider and VPC resource section
+
+
+
+Add AWS as a provider, and a resource to create a VPC in the main.tf file. 
+
+
+The provider block informs Terraform that we intend to build infrastructure within AWS.
+
+
+The resource block will create a VPC.
+
+
+Go to Terraform documentation ( https://registry.terraform.io/) , select the provider and go to documentation to access the various resources.
+
+
+
+
+![Screenshot from 2024-01-14 02-00-05](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/d3e60d33-841d-497b-823b-9284b7d8acaa)
+
+
+
+on the main.tf file, add the following codes
+
+
+
+
+~~~
+provider "aws" {
+  region = "us-east-1"
+}
+
+# Create VPC
+resource "aws_vpc" "main" {
+  cidr_block                     = "172.16.0.0/16"
+  enable_dns_support             = "true"
+  enable_dns_hostnames           = "true"
+  enable_classiclink             = "false"
+  enable_classiclink_dns_support = "false"
+  tags = {
+    Name = "netrill-VPC"
+  }
+}
+~~~
+
+
+
+
+
+
+![Screenshot from 2024-01-14 02-22-28](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/e8b9208b-ccf8-44b7-b4f0-c95e72fb642a)
+
+
+
+
+
+Then download the necessary plugins for Terraform to work. These plugins are used by providers and provisioners. At this stage, we only have provider in our main.tf file. So, Terraform will just download plugin for AWS provider. 
+
+
+Install terraform on the PBL directory on your local machine using the command 
+
+
+
+
+
+![Screenshot from 2024-01-14 02-28-13](https://github.com/ekomoku/Project-16-Automate-Infrastructure-With-IaC-using-Terraform-Part-1/assets/66005935/1a4e1293-83a4-4ebd-bab3-8c0f3a8f090c)
+
+
+
+
+~~~
+sudo snap install terraform --classic
+~~~
+
+
+
+Run the command
+
+
+terraform init
+
+
+
+
+
